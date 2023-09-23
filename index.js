@@ -10,11 +10,11 @@ const flash = require("connect-flash");
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(fileUpload());
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(fileUpload());
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({

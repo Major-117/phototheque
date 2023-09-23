@@ -5,7 +5,6 @@
 </head>
 <body>
     <%- include("partials/nav")%>
-
     <div class="container">
         <div class="row mt-4">
             <div class="col">
@@ -24,18 +23,22 @@
                         <h5 class="card-title">
                             Ajouter une image
                         </h5>
-                        <form method="POST" action="/albums/<%= album._id%>" class="form-inline" enctype="multipart/form-data">
-                            <input type="file" name="image" class="form-control-file">
+                        <form method="POST" action="/albums/<%= album._id %>" class="form-inline" enctype="multipart/form-data">
+                            <input type="file"  class="form-control-file">
+                            <button type="submit" class="btn btn-primary mt-3">
+                                Ajouter
+                            </button>
                         </form>
-                        <button type="submit" class="btn btn-primary mt-3">
-                            Ajouter
-                        </button>
+                        <% if (errors.length) { %>
+                            <div class="alert alert-danger mt-4 mb-2" role="alert">
+                                <%= errors[0] %>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <%- include("partials/scripts")%>
 </body>
 </html>
